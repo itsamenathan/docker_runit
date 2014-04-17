@@ -9,4 +9,5 @@ RUN apt-get install runit nginx openssh-server --yes --force-yes
 ADD run /etc/service/run/run
 RUN chmod +x /etc/service/run/run
 
+EXPOSE 22 80
 ENTRYPOINT ["/usr/sbin/runsvdir-start"]
