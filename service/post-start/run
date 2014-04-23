@@ -1,0 +1,5 @@
+#!/bin/dash
+
+# Makes /etc/service/nginx/run only run once
+sv once post-start
+exit 0

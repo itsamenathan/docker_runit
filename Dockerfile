@@ -1,13 +1,14 @@
-FROM ubuntu:latest
+FROM ubuntu:12.04
 MAINTAINER nathan@frcv.net
 
-# Install runit
-RUN apt-get update --yes --force-yes
-RUN apt-get install runit nginx openssh-server --yes --force-yes
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list \
+    && apt-get --quiet --yes update \
+    && apt-get --quiet --yes install runit nginx openssh-server \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists
 
-# Launch runit calling our run script.
-ADD run /etc/service/run/run
-RUN chmod +x /etc/service/run/run
+ADD service /opt/service
+RUN ln -s /opt/service/pre-start /etc/service/
 
 EXPOSE 22 80
 ENTRYPOINT ["/usr/sbin/runsvdir-start"]

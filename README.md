@@ -2,9 +2,9 @@
 
 The idea here is to show how to use runit to launch a script that configures other abolitions to run     
 * Install runit, openssh-server, nginx
-* Copy out run file into /etc/service/run 
+* Link out pre-start script
 * Launch runit
-* runit then runs /etc/service/run/run which configures both openssh and nginx
+* runit then runs pre-start which configures both openssh and nginx
 
 ## resources
 * [Main runit page](http://smarden.org/runit/) - Main page all about runit.
