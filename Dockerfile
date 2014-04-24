@@ -11,4 +11,4 @@ ADD service /opt/service
 RUN ln -s /opt/service/pre-start /etc/service/
 
 EXPOSE 22 80
-ENTRYPOINT ["/usr/sbin/runsvdir-start"]
+CMD [ "/usr/bin/runsvdir", "-P", "/etc/service"]
